@@ -1,0 +1,164 @@
+<html>
+<head>
+	<script type="text/javascript" src="https://d2f25wgezub9nf.cloudfront.net/api/sketchfab-viewer-1.1.0.js"></script>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	
+	<!-- Klaas Nienhuis Stuff -->
+	<!-- <script src="http://www.3dmodelpublisher.com/OptionsOptions/lib/0.01/MaterialEditor.js"></script> -->
+	<script src="MaterialLibrary.js"></script>
+	<script src="ObjectSet.js"></script>
+	<script src="MaterialEditor.js"></script>
+	
+	<script type="text/javascript">
+		var version = '1.0.0';
+		
+		//keep track of the currently selected api, client and iframe
+		var theIframe;
+		var theApi;
+		var theClient;
+		var theEmbedLink = "633a42c2db484bf7a2bf5101b6b9ea7b";
+	</script>
+	
+</head>
+
+<body>
+
+<div class="container" id="container">
+	<div style="margin-top: 20px" >
+			<div class="btn-group">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pillows</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li><a class='SetMaterial' data-option='hexa' data-set='Pillows'>hexa</a></li>
+				<li><a class='SetMaterial' data-option='red hexa' data-set='Pillows'>red hexa</a></li>
+				<li><a class='SetMaterial' data-option='cercles' data-set='Pillows'>cercles</a></li>
+				<li><a class='SetMaterial' data-option='blue hexa' data-set='Pillows'>blue hexa</a></li>
+				<li><a class='SetMaterial' data-option='waves' data-set='Pillows'>waves</a></li>
+			</div>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fabrics</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li><a class='SetMaterial' data-option='sharp	' data-set='Fabrics'>sharp	</a></li>
+				<li><a class='SetMaterial' data-option='brown' data-set='Fabrics'>brown</a></li>
+				<li><a class='SetMaterial' data-option='red' data-set='Fabrics'>red</a></li>
+				<li><a class='SetMaterial' data-option='sky' data-set='Fabrics'>sky</a></li>
+				<li><a class='SetMaterial' data-option='teal' data-set='Fabrics'>teal</a></li>
+			</div>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">legs</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li><a class='SetMaterial' data-option='Black legs' data-set='legs'>Black legs</a></li>
+				<li><a class='SetMaterial' data-option='Chrome Legs' data-set='legs'>Chrome Legs</a></li>
+				<li><a class='SetMaterial' data-option='Wood Legs' data-set='legs'>Wood Legs</a></li>
+			</div>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hpouf</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li><a class='SetVisible' data-option='Off' data-set='Hpouf'>Off</a></li>
+				<li><a class='SetVisible' data-option='On' data-set='Hpouf'>On</a></li>
+			</div>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hright</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li><a class='SetVisible' data-option='Off' data-set='Hright'>Off</a></li>
+				<li><a class='SetVisible' data-option='On' data-set='Hright'>On</a></li>
+			</div>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hcorner</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li><a class='SetVisible' data-option='Off' data-set='Hcorner'>Off</a></li>
+				<li><a class='SetVisible' data-option='On' data-set='Hcorner'>On</a></li>
+			</div>
+		</div>
+
+	</div>
+
+	<div style="margin-top: 20px">
+		<div class="embed-responsive embed-responsive-4by3">
+			<iframe id="sketchfab-iframe" class="embed-responsive-item" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="vr"></iframe>
+		</div>	
+	</div>	
+
+	<div class="panel panel-default" style="margin-top: 20px">
+		<div class="panel-body">Configurator built by <a href="https://www.thefullroom.com">The Full Room</a>, powered by <a href="https://sketchfab.com/">Sketchfab.</a></div>
+	</div>              
+</div>
+	
+<script>
+	theIframe = document.getElementById( 'sketchfab-iframe' );
+	theClient = new Sketchfab( version, theIframe );
+	
+	function Error() {
+	    console.error( 'Error api Sketchfab !' );
+	}
+	
+	function LoadModel(embedLink,client) {	
+		client.init( embedLink, {
+			success: function onSuccess(callback){
+				theApi = callback;
+				theApi.load();
+				theApi.start();
+				theApi.addEventListener( 'viewerready', function() {
+					//do some stuff here when the model has loaded
+					
+                    function mycallback() {
+						//load each first material from each option group
+						for (var optionGroup in MaterialLibrary)
+						{
+							var defaultOption = Object.keys(MaterialLibrary[optionGroup])[0];
+							MaterialFactory.updateSceneMaterial(theApi,optionGroup,defaultOption)
+						}
+						//then hide the special textureplanes
+						ObjectFactory.SetObjectVisibility(theApi,"optionsoptions_texture_plane",false,true)
+						ObjectFactory.setDefaultObjectVisibility(theApi)
+						
+						//set up the events
+						$("#container").on("click",".SetMaterial", function (event) {
+							var set = event.currentTarget.dataset.set
+							var option = event.currentTarget.dataset.option
+							MaterialFactory.updateSceneMaterial(theApi,set,option);
+						}); 						
+						$("#container").on("click",".SetVisible", function (event) {
+							var set = event.currentTarget.dataset.set
+							var option = event.currentTarget.dataset.option
+							ObjectFactory.updateObjectVisibility(theApi,set,option);
+						}); 						
+						
+                    }					
+					
+					TextureFactory.GetTextureNames(theApi,mycallback)					
+				} );
+
+			},
+			error: Error,
+			autospin: 0.0,
+			transparent: 0,
+			ui_stop: 0,
+			ui_infos: 0, //need biz account
+			ui_general_controls: 0, //need premium account
+			ui_watermark: 0, //need enterprise account
+			scrollwheel: 1
+		});
+	}	
+	
+	theApi =  LoadModel(theEmbedLink,theClient);
+	
+
+
+</script>
+
+</body>
+
+</html>
